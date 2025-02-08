@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {
@@ -29,5 +28,24 @@ public class ProductController {
         }
         return ResponseEntity.ok(productService.getProductById(id));
     }
+
+    @GetMapping("/filter")
+    public ResponseEntity<List<Product>> getFilteredProducts(
+            @RequestParam(required = false) String type,
+            @RequestParam(required = false) String material,
+            @RequestParam(required = false) String color,
+            @RequestParam(required = false) Double priceFrom,
+            @RequestParam(required = false) Double priceTo,
+            @RequestParam(required = false) String availability) {
+
+        List<Product> products = productService.getFilteredProducts(type, material, color, priceFrom, priceTo, availability);
+
+        if (products.isEmpty()) {
+            return ResponseEntity.noContent().build();  // Возвращаем 204, если товаров нет
+        }
+
+        return ResponseEntity.ok(products);
+    }
+
 
 }
