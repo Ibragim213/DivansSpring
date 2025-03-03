@@ -11,11 +11,10 @@ public class CorsConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                System.out.println("Configuring CORS...");
                 registry.addMapping("/api/**")
-                        .allowedOrigins("http://localhost:8081")
+                        .allowedOrigins("http://localhost:8081")  // Укажите конкретный URL фронтенда
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                        .allowCredentials(true);
+                        .allowCredentials(true);  // Оставить allowCredentials true
             }
         };
     }

@@ -1,12 +1,15 @@
 package com.example.reviews.controller;
 
 import com.example.reviews.model.Product;
+import com.example.reviews.repository.ProductRepository;
 import com.example.reviews.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {

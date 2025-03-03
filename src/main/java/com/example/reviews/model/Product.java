@@ -10,7 +10,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+private String old_price;
     private String name;
     private String material;
     private double price;
@@ -19,8 +19,8 @@ public class Product {
     private double depth;        // Глубина (см)
     private double width;        // Ширина (см)
     private double height;       // Высота (см)
-    private double weight;       // Вес (кг)
-
+    private double weight;// Вес (кг)
+    private String image;
     private String type;  // Добавляем поле для типа товара (например, кресло или диван)
     private String availability;  // Добавляем поле для статуса наличия (например, в наличии или под заказ)
 
@@ -31,7 +31,7 @@ public class Product {
     public Product() {} // Пустой конструктор
 
     public Product(Long id, String name, double price, String material, String color, String description,
-                   double depth, double width, double height, double weight, String type, String availability) {
+                   double depth, double width, double height, double weight, String type, String availability, String old_price , String image) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -44,6 +44,10 @@ public class Product {
         this.weight = weight;
         this.type = type;
         this.availability = availability;
+        this.old_price = old_price;
+        this.image = image;
+
+
     }
 
     // Геттеры и сеттеры
@@ -59,6 +63,9 @@ public class Product {
     public double getWeight() { return weight; }
     public String getType() { return type; }  // Геттер для типа
     public String getAvailability() { return availability; }  // Геттер для наличия
+    public String getOld_price() { return old_price; }
+    public String getImage() { return image; }
+
 
     public void setId(Long id) { this.id = id; }
     public void setName(String name) { this.name = name; }
@@ -72,4 +79,6 @@ public class Product {
     public void setWeight(double weight) { this.weight = weight; }
     public void setType(String type) { this.type = type; }  // Сеттер для типа
     public void setAvailability(String availability) { this.availability = availability; }  // Сеттер для наличия
+    public void setOld_price(String old_price) { this.old_price = old_price; }
+    public void setImage(String image) { this.image = image; }
 }
