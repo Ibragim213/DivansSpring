@@ -17,7 +17,7 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
 
     public User registerUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setPassword(passwordEncoder.encode(user.getPassword())); // Хэширование пароля
         return userRepository.save(user);
     }
 
@@ -36,7 +36,7 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
-    private UserDTO convertToDTO(User user) {
+    public UserDTO convertToDTO(User user) {
         UserDTO userDTO = new UserDTO();
         userDTO.setId(user.getId());
         userDTO.setEmail(user.getEmail());

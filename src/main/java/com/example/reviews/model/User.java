@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users", schema = "public", catalog = "users")
 @Getter
 @Setter
 public class User {
@@ -17,7 +17,7 @@ public class User {
     private String email;
 
     @Column(nullable = false)
-    private String password; // Должен быть закодирован!
+    private String password; // Хэшированный пароль
 
     private String firstName;
     private String lastName;
