@@ -12,6 +12,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**")
+
                         .allowedOrigins("http://localhost:8081")  // Укажите конкретный URL фронтенда
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowCredentials(true);  // Оставить allowCredentials true

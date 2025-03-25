@@ -30,7 +30,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/api/auth/**").permitAll() // Разрешаем регистрацию и логин без авторизации
                         .requestMatchers("/api/products/**").permitAll() // Разрешаем доступ к продуктам без авторизации
-                        .requestMatchers("/api/users/**").permitAll() // Разрешаем доступ к пользователям
+                        .requestMatchers("/api/users/**").authenticated() // Требуем аутентификацию для доступа к пользователям
                         .anyRequest().authenticated() // Все остальное требует авторизации
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Отключаем сессии
@@ -38,6 +38,9 @@ public class SecurityConfig {
 
         return http.build();
     }
+
+
+
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {

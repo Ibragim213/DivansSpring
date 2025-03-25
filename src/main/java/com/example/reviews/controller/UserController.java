@@ -1,7 +1,6 @@
 package com.example.reviews.controller;
 
 import com.example.reviews.dto.UserDTO;
-import com.example.reviews.model.User;
 import com.example.reviews.service.UserService;
 import com.example.reviews.util.JwtUtil;
 import org.springframework.web.bind.annotation.*;
@@ -27,18 +26,8 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    // Получение пользователя по ID
-    @GetMapping("/{id}")
-    public UserDTO getUserById(@PathVariable Long id) {
+    @GetMapping("/api/users/{id}")
+    public UserDTO getUserProfile(@PathVariable Long id) {
         return userService.getUserById(id);
-    }
-
-    // Получение текущего пользователя
-    @GetMapping("/me")
-    public UserDTO getCurrentUser(@RequestHeader("Authorization") String token) {
-        String email = jwtUtil.extractUsername(token.substring(7)); // Убираем "Bearer "
-        User user = userService.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("Пользователь не найден"));
-        return userService.convertToDTO(user);
     }
 }
